@@ -1,0 +1,86 @@
+package com.thecardcottage.EcomBackend.daoimpl;
+
+import java.util.List;
+
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.thecardcottage.EcomBackend.dao.ProductDao;
+
+@Transactional
+@Repository
+public class ProductDaoImpl implements ProductDao {
+	@Autowired
+	SessionFactory sessionFactory;
+
+
+	@Override
+	public boolean insertProduct(ProductDao product) {
+		try {
+		sessionFactory.getCurrentSession().save(product);
+		return true;
+		}
+		catch(Exception e)
+		{
+		return false;
+	}
+	}
+
+	@Override
+	public boolean updateProduct(ProductDao product) {
+		try {
+			sessionFactory.getCurrentSession().update(product);
+			return true;
+			}
+			catch(Exception e)
+			{
+			return false;
+		}
+	}
+
+	
+	@Override
+	public boolean deleteProduct(int pdtid)  {
+		try
+		{
+			sessionFactory.getCurrentSession().delete(pdtid);
+			return true;
+			
+		}
+		catch(Exception e)
+		{
+			return false;
+		}
+		
+	}
+
+	
+
+	@Override
+	public List<ProductDao> selectAllProducts() {
+		try
+		{
+			return sessionFactory.getCurrentSession().createQuery("from Product").list();
+			}
+		catch(Exception e)
+		{
+			return null;
+		}
+		}
+
+	@Override
+	public ProductDao selectOneProduct(int pdtid)  {
+		try
+		{
+			return (ProductDao)sessionFactory.getCurrentSession().createQuery("from product where product id='"+pdtid+"'").uniqueResult();
+		}
+		catch(Exception e)
+		{
+			return null;
+		}
+		
+		}
+
+}

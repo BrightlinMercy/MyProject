@@ -21,7 +21,6 @@ public class SellerDaoImpl implements SellerDao {
 		try {
 			Usercred uc=new Usercred();
 			uc.setUername(seller.getSellername());
-			uc.setPassword(seller.getSellerpassword());
 			uc.setRole("ROLE_SELLER");
 			uc.setStatus(false);
 		sessionFactory.getCurrentSession().save(seller);
@@ -51,7 +50,7 @@ public class SellerDaoImpl implements SellerDao {
 	public boolean deleteSeller(String sellername) {
 		try
 		{
-			sessionFactory.getCurrentSession().delete(sellername,Seller.class);
+			sessionFactory.getCurrentSession().delete(selectOneSeller(sellername));
 			return true;
 			
 		}
@@ -80,7 +79,7 @@ public class SellerDaoImpl implements SellerDao {
 	public Seller selectOneSeller(String sellername) {
 		try
 		{
-			return (Seller)sessionFactory.getCurrentSession().createQuery("from customer while email id='"+sellername+"'").uniqueResult();
+			return (Seller)sessionFactory.getCurrentSession().createQuery("from Seller where sellername='"+sellername+"'").uniqueResult();
 		}
 		catch(Exception e)
 		{

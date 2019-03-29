@@ -22,7 +22,7 @@ public class DbConfig {
 		{	
 			BasicDataSource basicDataSource=new BasicDataSource();
 			basicDataSource.setDriverClassName("org.h2.Driver");
-			basicDataSource.setUrl("jdbc:h2:~/proj409");
+			basicDataSource.setUrl("jdbc:h2:tcp://localhost/~/TheCardCottage");
 			basicDataSource.setUsername("sa");
 			basicDataSource.setPassword("sa");
 			return basicDataSource;

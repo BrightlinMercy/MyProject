@@ -103,14 +103,26 @@ body {
 					<div class="card-header">SELLER</div>
 					<div class="card-body">
 						<div class="row">
-							<form:form action="addseller" modelAttribute="sellerobject">
+							<c:if test="${!editmode}">
+								<c:set var="action" value="addseller"></c:set>
+							</c:if>
+
+							<c:if test="${editmode}">
+								<c:set var="action" value="updateseller"></c:set>
+							</c:if>
+
+
+							<form:form action="${action}" modelAttribute="sellobject">
+								<c:if test="${editmode}">
+									<form:hidden path="sellerid" />
+								</c:if>
 								<div class="form-group row">
 									<label for="email_address"
 										class="col-md-4 col-form-label text-md-right">SELLER
 										NAME</label>
 									<div class="col-md-6">
 										<form:input type="text" id="email_address"
-											class="form-control" name="email-address" path="sellername"/>
+											class="form-control" name="email-address" path="sellername" />
 									</div>
 								</div>
 
@@ -155,8 +167,10 @@ body {
 												<td>${sell.sellername}</td>
 												<td>${sell.sellerdesc}</td>
 												<td class="text-center"><a class='btn btn-info btn-xs'
-													href="#"><span class="glyphicon glyphicon-edit"></span>
-														Edit</a> <a href="#" class="btn btn-danger btn-xs"><span
+													href="editseller?sellname=${sell.sellername}"><span
+														class="glyphicon glyphicon-edit"></span> Edit</a> <a
+													href="deleteseller?sellname=${sell.sellername}"
+													class="btn btn-danger btn-xs"><span
 														class="glyphicon glyphicon-remove"></span> Del</a></td>
 										</c:forEach>
 
@@ -170,6 +184,7 @@ body {
 				</div>
 			</div>
 		</div>
+	</div>
 	</div>
 	</div>
 

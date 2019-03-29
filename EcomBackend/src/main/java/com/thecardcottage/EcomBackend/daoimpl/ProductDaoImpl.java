@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.thecardcottage.EcomBackend.dao.ProductDao;
+import com.thecardcottage.EcomBackend.model.Product;
 
 @Transactional
 @Repository
@@ -17,7 +18,7 @@ public class ProductDaoImpl implements ProductDao {
 
 
 	@Override
-	public boolean insertProduct(ProductDao product) {
+	public boolean insertProduct(Product product) {
 		try {
 		sessionFactory.getCurrentSession().save(product);
 		return true;
@@ -29,7 +30,7 @@ public class ProductDaoImpl implements ProductDao {
 	}
 
 	@Override
-	public boolean updateProduct(ProductDao product) {
+	public boolean updateProduct(Product product) {
 		try {
 			sessionFactory.getCurrentSession().update(product);
 			return true;
@@ -45,7 +46,7 @@ public class ProductDaoImpl implements ProductDao {
 	public boolean deleteProduct(int pdtid)  {
 		try
 		{
-			sessionFactory.getCurrentSession().delete(pdtid);
+			sessionFactory.getCurrentSession().delete(selectOneProduct(pdtid));
 			return true;
 			
 		}
@@ -59,7 +60,7 @@ public class ProductDaoImpl implements ProductDao {
 	
 
 	@Override
-	public List<ProductDao> selectAllProducts() {
+	public List<Product> selectAllProducts() {
 		try
 		{
 			return sessionFactory.getCurrentSession().createQuery("from Product").list();
@@ -71,10 +72,10 @@ public class ProductDaoImpl implements ProductDao {
 		}
 
 	@Override
-	public ProductDao selectOneProduct(int pdtid)  {
+	public Product selectOneProduct(int pdtid)  {
 		try
 		{
-			return (ProductDao)sessionFactory.getCurrentSession().createQuery("from product where product id='"+pdtid+"'").uniqueResult();
+			return (Product)sessionFactory.getCurrentSession().createQuery("from Product where pdtid="+pdtid).uniqueResult();
 		}
 		catch(Exception e)
 		{

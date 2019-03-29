@@ -46,7 +46,7 @@ public class CategoryDaoImpl implements CategoryDao {
 	public boolean deleteCategory(String catename){
 		try
 		{
-			sessionFactory.getCurrentSession().delete(catename,Category.class);
+			sessionFactory.getCurrentSession().delete(selectOneCategory(catename));
 			
 			return true;
 			
@@ -75,7 +75,7 @@ public class CategoryDaoImpl implements CategoryDao {
 	public Category selectOneCategory(String catename){
 		try
 		{
-			return (Category) sessionFactory.getCurrentSession().createQuery("from customer while having name='"+catename+"'");
+			return (Category) sessionFactory.getCurrentSession().createQuery("from Category where catename='"+catename+"'").uniqueResult();
 		}
 		catch(Exception e)
 		{

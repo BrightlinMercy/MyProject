@@ -5,7 +5,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Transient;
+import javax.validation.constraints.Pattern;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 public class Seller {
@@ -15,13 +17,17 @@ public class Seller {
 	private int sellerid;
 	
 	@Column(nullable=false,unique=true)
+	@NotEmpty(message="Category Name is Mandatory")
+	@Pattern(regexp="[a-zA-Z ]{3,255}",message="Can Contain only Alphabets max 255 characters ")
+
 	private String sellername;
 	
 	@Column(nullable=false)
-	private String sellerdesc;
+	@NotEmpty(message = "Category Description is Mandatory")
+	@Pattern(regexp = "[0-9a-zA-Z ]{3,255}", message = "Can Contain only Alphabets & Numbers max 255 characters ")
+    private String sellerdesc;
 	
-	@Transient
-	private String sellerpassword;
+
 
 	public int getSellerid() {
 		return sellerid;
@@ -36,14 +42,6 @@ public class Seller {
 
 	public String getSellername() {
 		return sellername;
-	}
-
-	public String getSellerpassword() {
-		return sellerpassword;
-	}
-
-	public void setSellerpassword(String sellerpassword) {
-		this.sellerpassword = sellerpassword;
 	}
 
 	public void setSellername(String sellername) {

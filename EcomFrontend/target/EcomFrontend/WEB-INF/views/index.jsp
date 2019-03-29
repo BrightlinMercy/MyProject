@@ -41,6 +41,12 @@
 		<c:if test="${categoryPage}">
 			<jsp:include page="category.jsp" />
 		</c:if>
+		<c:if test="${sellerPage}">
+			<jsp:include page="seller.jsp" />
+		</c:if>
+		<c:if test="${productPage}">
+			<jsp:include page="product.jsp" />
+		</c:if>
 
 	</div>
 

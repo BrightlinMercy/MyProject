@@ -85,8 +85,8 @@ body {
 	<main class="login-form">
 	<div class="cotainer">
 		<c:if test="${success}">
-			<div class="alert alert-success" role="alert">inserted
-				successfully</div>
+			<div class="alert alert-success" role="alert">Inserted
+				Successfully</div>
 
 		</c:if>
 
@@ -103,7 +103,20 @@ body {
 					<div class="card-header">CATEGORY</div>
 					<div class="card-body">
 						<div class="row">
-							<form:form action="addcategory" modelAttribute="catobject">
+							<c:if test="${!editmode}">
+								<c:set var="action" value="addcategory"></c:set>
+							</c:if>
+
+							<c:if test="${editmode}">
+								<c:set var="action" value="updatecategory"></c:set>
+							</c:if>
+
+
+
+							<form:form action="${action}" modelAttribute="catobject">
+								<c:if test="${editmode}">
+									<form:hidden path="cateid" />
+								</c:if>
 								<div class="form-group row">
 									<label for="email_address"
 										class="col-md-4 col-form-label text-md-right">CATEGORY
@@ -155,8 +168,10 @@ body {
 												<td>${cat.catename}</td>
 												<td>${cat.catedesc}</td>
 												<td class="text-center"><a class='btn btn-info btn-xs'
-													href="#"><span class="glyphicon glyphicon-edit"></span>
-														Edit</a> <a href="#" class="btn btn-danger btn-xs"><span
+													href="editcategory?catname=${cat.catename}"><span
+														class="glyphicon glyphicon-edit"></span> Edit</a> <a
+													href="deletecategory?catname=${cat.catename}"
+													class="btn btn-danger btn-xs"><span
 														class="glyphicon glyphicon-remove"></span> Del</a></td>
 										</c:forEach>
 

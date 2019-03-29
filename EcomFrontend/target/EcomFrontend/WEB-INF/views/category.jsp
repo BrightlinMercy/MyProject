@@ -84,22 +84,46 @@ body {
 
 	<main class="login-form">
 	<div class="cotainer">
-	
-			<div class="row justify-content-center">
-	
+		<c:if test="${success}">
+			<div class="alert alert-success" role="alert">Inserted
+				Successfully</div>
+
+		</c:if>
+
+		<c:if test="${error}">
+			<div class="alert alert-danger" role="alert">${message}</div>
+
+		</c:if>
+
+
+		<div class="row justify-content-center">
+
 			<div class="col-md-10">
 				<div class="card">
 					<div class="card-header">CATEGORY</div>
 					<div class="card-body">
 						<div class="row">
-							<form:form action="addcategory" modelAttribute="catobject">
+							<c:if test="${!editmode}">
+								<c:set var="action" value="addcategory"></c:set>
+							</c:if>
+
+							<c:if test="${editmode}">
+								<c:set var="action" value="updatecategory"></c:set>
+							</c:if>
+
+
+
+							<form:form action="${action}" modelAttribute="catobject">
+								<c:if test="${editmode}">
+									<form:hidden path="cateid" />
+								</c:if>
 								<div class="form-group row">
 									<label for="email_address"
 										class="col-md-4 col-form-label text-md-right">CATEGORY
 										NAME</label>
 									<div class="col-md-6">
 										<form:input type="text" id="email_address"
-											class="form-control" name="email-address" path="catename"/>
+											class="form-control" name="email-address" path="catename" />
 									</div>
 								</div>
 
@@ -129,7 +153,7 @@ body {
 							<div class="col-lg-12">
 								<table class="table table-striped custab">
 									<thead>
-										
+
 										<tr>
 											<th>CATEGORY ID</th>
 											<th>CATEGORY NAME</th>
@@ -143,7 +167,12 @@ body {
 												<td>${cat.cateid}</td>
 												<td>${cat.catename}</td>
 												<td>${cat.catedesc}</td>
-												<td class="text-center"><a class='btn btn-info btn-xs' href="#"><span class="glyphicon glyphicon-edit"></span> Edit</a> <a href="#" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> Del</a></td>
+												<td class="text-center"><a class='btn btn-info btn-xs'
+													href="editcategory?catname=${cat.catename}"><span
+														class="glyphicon glyphicon-edit"></span> Edit</a> <a
+													href="deletecategory?catname=${cat.catename}"
+													class="btn btn-danger btn-xs"><span
+														class="glyphicon glyphicon-remove"></span> Del</a></td>
 										</c:forEach>
 
 									</tbody>

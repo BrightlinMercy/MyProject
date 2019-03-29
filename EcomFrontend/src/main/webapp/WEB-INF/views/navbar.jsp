@@ -47,7 +47,6 @@
 .nav {
 	background-color: #800080	;
 	border-bottom: 1px solid #ececec;
-	min-height: 50px;
 	height: auto;
 }
 
@@ -97,7 +96,7 @@
 	text-decoration: none;
 	display: block;
 	line-height: 60px;
-	padding: 0px 35px;
+	padding: 0px 15px;
 }
 
 .nav .list>li>a:hover {
@@ -313,6 +312,8 @@
 					<li><a href="register">Register</a></li>
 					<li><a href="category">Category</a></li>
 					<li><a href="seller">Seller</a></li>
+					<li><a href="product">Product</a></li>
+					
 					
 				</ul>
 			</div>

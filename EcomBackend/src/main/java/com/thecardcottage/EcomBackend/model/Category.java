@@ -23,8 +23,7 @@ public class Category {
 	@Column(nullable = false)
 	@NotEmpty(message = "Category Description is Mandatory")
 	@Pattern(regexp = "[0-9a-zA-Z ]{3,255}", message = "Can Contain only Alphabets & Numbers max 255 characters ")
-
-	private String catedesc;
+    private String catedesc;
 
 	public int getCateid() {
 		return cateid;

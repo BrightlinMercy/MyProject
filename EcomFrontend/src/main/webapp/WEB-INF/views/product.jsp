@@ -14,20 +14,22 @@ body {
 
 
 <body>
+
+
 	<fieldset>
 		<div class="container">
-		<c:if test="${success}">
-			<div class="alert alert-success" role="alert">inserted
-				successfully</div>
+			<c:if test="${success}">
+				<div class="alert alert-success" role="alert">inserted
+					successfully</div>
 
-		</c:if>
+			</c:if>
 
-		<c:if test="${error}">
-			<div class="alert alert-danger" role="alert">${message}</div>
+			<c:if test="${error}">
+				<div class="alert alert-danger" role="alert">${message}</div>
 
-		</c:if>
-		
-		
+			</c:if>
+
+
 
 			<c:if test="${!editmode}">
 				<c:set var="action" value="addproduct"></c:set>
@@ -38,7 +40,7 @@ body {
 			</c:if>
 
 
-			<form:form action="${action}" modelAttribute="productobject"
+			<form:form action="${action}" modelAttribute="productobject" enctype="multipart/form-data"
 				class="form-horizontal">
 				<c:if test="${editmode}">
 					<form:hidden path="pdtid" />
@@ -107,6 +109,8 @@ body {
 
 							</c:forEach>
 						</form:select>
+						
+						
 					</div>
 				</div>
 
@@ -125,7 +129,14 @@ body {
 
 					</div>
 				</div>
+				<!-- File Button -->
+				<div class="form-group">
+					<label for="pimage">PRODUCT IMAGE</label>
+					<form:input type="file" name="fileToUpload" id="fileToUpload" path="pimage" required="true"/>
 
+					</div>
+				</div>
+				<!-- File Button -->
 
 				<!-- Button -->
 				<div class="form-group">
@@ -149,6 +160,7 @@ body {
 								<th>PRODUCT PRICE</th>
 								<th>PRODUCT CATEGORY</th>
 								<th>PRODUCT SELLER</th>
+								<th>PRODUCT IMAGE</th>
 
 
 
@@ -166,6 +178,7 @@ body {
 									<td>${product.pdtprice}</td>
 									<td>${product.pdtcategory.catename}</td>
 									<td>${product.pdtseller.sellername}</td>
+									<td><img src="resources/productimages/${product.pdtid}.jpg" width="50" height="50"/></td>
 
 
 									<td class="text-center"><a class='btn btn-info btn-xs'

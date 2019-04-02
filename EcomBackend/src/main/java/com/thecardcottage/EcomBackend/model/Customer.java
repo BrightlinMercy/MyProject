@@ -6,6 +6,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Transient;
+import javax.validation.constraints.Pattern;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 public class Customer {
@@ -15,15 +18,20 @@ public class Customer {
 private int custid;
 
 @Column(nullable=false)
+@NotEmpty(message = "Category Name is Mandatory")
+@Pattern(regexp = "[a-zA-Z ]{3,255}", message = "Name cannot have numbers ")
 private String custname;
 
 @Column(nullable=false,unique=true)
+@Pattern(regexp = "^(.+)@(.+)$",message="invalid mailid")
 private String custemailid;
 
 @Column(nullable=false,unique=true)
+
 private String custphno;
 
 @Transient
+@Pattern(regexp="^(?i)(?=.*[a-z])(?=.*[0-9])[a-z0-9#.!@$*&_]{5,12}$")
 private String custpassword;
 
 public int getCustid() {

@@ -24,7 +24,7 @@ public class Seller {
 	
 	@Column(nullable=false)
 	@NotEmpty(message = "Category Description is Mandatory")
-	@Pattern(regexp = "[0-9a-zA-Z ]{3,255}", message = "Can Contain only Alphabets & Numbers max 255 characters ")
+	@Pattern(regexp = "[0-9a-zA-Z ]{3,500}", message = "Can Contain only Alphabets & Numbers max 255 characters ")
     private String sellerdesc;
 	
 

@@ -33,12 +33,7 @@ public class HomeController {
 		model.addAttribute("loginPage", true);
 		return "index";
 	}
-	@RequestMapping("/register")
-	String registerPage(Model model)
-	{
-		model.addAttribute("registerPage", true);
-		return "index";
-	}
+	
 	
 	
 	

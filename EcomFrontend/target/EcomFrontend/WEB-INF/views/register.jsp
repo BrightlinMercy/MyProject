@@ -1,3 +1,8 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+
+
 <style>
 body {
 	font-family: 'PT Sans', Helvetica, Arial, sans-serif;
@@ -195,17 +200,23 @@ button:active {
 
 
 	<div class="page-container">
-
-		<form action="#" method="POST">
+	
+		<form:form action="addcustomer" modelAttribute="regobject">
 			<h1>Register With Us</h1>
-			<input type="text" name="name" class="Name"
-				placeholder="Enter your Name"> <input type="text"
-				name="tele" class="Tele" placeholder="Enter your Number"> <input
-				type="text" name="email" class="Email"
-				placeholder="Enter your Email"> <input type="password"
-				name="password" class="Address" placeholder="Enter password">
+			<form:input type="text" name="name" class="Name" path="custname"
+				placeholder="Enter your Name"/>
+
+			<form:input type="text" name="tele" class="Tele" path="custphno"
+				placeholder="Enter your Number" />
+
+			<form:input type="text" name="email" class="Email" path="custemailid"
+				placeholder="Enter your Email" />
+
+			<form:input type="password" name="password" class="Address" path="custpassword"
+				placeholder="Enter password" />
+
 			<button type="submit" value="Add" name="submit">Submit</button>
-		</form>
+		</form:form>
 	</div>
 
 

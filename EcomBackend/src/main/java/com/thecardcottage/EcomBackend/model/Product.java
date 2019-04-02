@@ -6,12 +6,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Transient;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
-import javax.validation.constraints.Pattern;
 
-
-import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 public class Product {
@@ -20,12 +19,10 @@ public class Product {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int pdtid;
 	
-	@Column(nullable=false)
-	@NotEmpty
-	@Pattern(regexp="[a-zA-Z ]{3,255}",message="Can Contain only Alphabets max 255 characters ")
+	@Column(nullable=false, columnDefinition="text")
 	private String pdtname;
 	
-	@Column(nullable=false, columnDefinition="test")
+	@Column(nullable=false, columnDefinition="text")
 	private String pdtdesc;
 	
 
@@ -41,9 +38,22 @@ public class Product {
     private int pdtstock;
 	
    @Column(nullable=false)
-   @Min(value=100)
+   @Min(value=20)
    @Max(value=1000)
     private int pdtprice;
+   
+   @Transient
+   private MultipartFile pimage;
+
+
+	public MultipartFile getPimage() {
+	return pimage;
+}
+
+
+public void setPimage(MultipartFile pimage) {
+	this.pimage = pimage;
+}
 
 
 	public int getPdtprice() {

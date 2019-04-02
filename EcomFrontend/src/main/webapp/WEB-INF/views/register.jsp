@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<c:set var="cr" value="${pageContext.request.contextPath}"/>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 
@@ -10,7 +10,7 @@ body {
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-color: white;
-	background-image: url("resources/images/white.jpg");
+	background-image: url("${cr}/resources/images/white.jpg");
 }
 
 .page-container {
@@ -200,20 +200,40 @@ button:active {
 
 
 	<div class="page-container">
-	
+		<c:if test="${success}">
+			<div class="alert alert-success" role="alert">Inserted
+				Successfully</div>
+		</c:if>
+
+		<c:if test="${error}">
+			<div class="alert alert-danger" role="alert">${message}</div>
+
+		</c:if>
+
+
+
+
+
 		<form:form action="addcustomer" modelAttribute="regobject">
 			<h1>Register With Us</h1>
 			<form:input type="text" name="name" class="Name" path="custname"
-				placeholder="Enter your Name"/>
+				placeholder="Enter your Name" />
+			<form:errors path="custname" cssStyle="color:Red"></form:errors>
 
 			<form:input type="text" name="tele" class="Tele" path="custphno"
 				placeholder="Enter your Number" />
+			<form:errors path="custphno" cssStyle="color:Red"></form:errors>
+
 
 			<form:input type="text" name="email" class="Email" path="custemailid"
 				placeholder="Enter your Email" />
+			<form:errors path="custemailid" cssStyle="color:Red"></form:errors>
 
-			<form:input type="password" name="password" class="Address" path="custpassword"
-				placeholder="Enter password" />
+
+			<form:input type="password" name="password" class="Address"
+				path="custpassword" placeholder="Enter password" />
+			<form:errors path="custpassword" cssStyle="color:Red"></form:errors>
+
 
 			<button type="submit" value="Add" name="submit">Submit</button>
 		</form:form>

@@ -3,6 +3,7 @@ package com.thecardcottage.EcomFrontend.Controller;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -36,7 +37,9 @@ public class CustomerRegisterController {
 				model.addAttribute("error", true);
 				model.addAttribute("message", "Inappropriate Data");
 			} else {
-				if (custdao.insertCustomer(u)) {
+				BCryptPasswordEncoder passwordEncoder=new BCryptPasswordEncoder();
+				u.setCustpassword(passwordEncoder.encode(u.getCustpassword()));
+			if (custdao.insertCustomer(u)) {
 					model.addAttribute("regobject", new Customer());
 					model.addAttribute("success", true);
 				} else {

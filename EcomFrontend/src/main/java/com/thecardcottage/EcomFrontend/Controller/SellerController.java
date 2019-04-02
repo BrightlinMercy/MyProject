@@ -14,6 +14,7 @@ import com.thecardcottage.EcomBackend.dao.SellerDao;
 import com.thecardcottage.EcomBackend.model.Seller;
 
 @Controller
+@RequestMapping("/admin")
 public class SellerController {
 	@Autowired
 	SellerDao sellerdao;

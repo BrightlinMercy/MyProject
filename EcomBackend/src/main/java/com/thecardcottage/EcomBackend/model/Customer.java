@@ -23,15 +23,14 @@ private int custid;
 private String custname;
 
 @Column(nullable=false,unique=true)
-@Pattern(regexp = "^(.+)@(.+)$",message="invalid mailid")
+//@Pattern(regexp="^([a-zA-Z0-9_\\\\-\\\\.]+)@((\\\\[[0-9]{1,3}\\\\.[0-9]{1,3}\\\\.[0-9]{1,3}\\\\.)|(([a-zA-Z0-9\\\\-]+\\\\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\\\\]?)$", message="data not matched")
 private String custemailid;
 
 @Column(nullable=false,unique=true)
-
 private String custphno;
 
 @Transient
-@Pattern(regexp="^(?i)(?=.*[a-z])(?=.*[0-9])[a-z0-9#.!@$*&_]{5,12}$")
+//@Pattern(regexp="^[a-zA-Z]\\w{3,14}$\r\n", message="invalid")
 private String custpassword;
 
 public int getCustid() {

@@ -1,3 +1,6 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="cr" value="${pageContext.request.contextPath}"/>
+
 <style>
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600)
 	;
@@ -8,7 +11,7 @@ body {
 	font-weight: 400;
 	line-height: 1.6;
 	text-align: left;
-	background-image: url("resources/images/white.jpg");
+	background-image: url("${cr}/resources/images/white.jpg");
 }
 
 .card {
@@ -90,47 +93,54 @@ body {
 
 	<main class="login-form">
 	<div class="cotainer">
+		<c:if test="${error}">
+			<div class="alert alert-danger" role="alert">Username or
+				Password incorrect</div>
+
+		</c:if>
+
 		<div class="row justify-content-center">
 			<div class="col-md-6">
 				<div class="card">
 					<div class="card-header">LOGIN</div>
 					<div class="card-body">
-						<form action="" method="">
+						<form action="perform_login" method="post">
 							<div class="form-group row">
 								<label for="email_address"
 									class="col-md-4 col-form-label text-md-right">E-Mail
 									Address</label>
 								<div class="col-md-6">
 									<input type="text" id="email_address" class="form-control"
-										name="email-address" required autofocus>
+										name="user_name" required autofocus>
 								</div>
-							</div>
 
-							<div class="form-group row">
-								<label for="password"
-									class="col-md-4 col-form-label text-md-right">Password</label>
-								<div class="col-md-6">
-									<input type="password" id="password" class="form-control"
-										name="password" required>
+
+								<div class="form-group row">
+									<label for="password"
+										class="col-md-4 col-form-label text-md-right">Password</label>
+									<div class="col-md-6">
+										<input type="password" id="password" class="form-control"
+											name="user_password" required>
+									</div>
 								</div>
-							</div>
 
-							<div class="form-group row">
-								<div class="col-md-6 offset-md-4">
-									<div class="checkbox">
-										<label> <input type="checkbox" name="remember">
-											Remember Me
-										</label>
+								<div class="form-group row">
+									<div class="col-md-6 offset-md-4">
+										<div class="checkbox">
+											<label> <input type="checkbox" name="remember">
+												Remember Me
+											</label>
+										</div>
 									</div>
 								</div>
 							</div>
-
-							<div class="col-md-6 offset-md-4">
-								<button type="submit" class="btn btn-primary">Login</button>
-								<a href="#" class="btn btn-link"> Forgot Your Password? </a>
-							</div>
+						</form>
+						<div class="col-md-6 offset-md-4">
+							<button type="submit" class="btn btn-primary">Login</button>
+							<a href="#" class="btn btn-link"> Forgot Your Password? </a>
+						</div>
 					</div>
-					</form>
+
 				</div>
 			</div>
 		</div>

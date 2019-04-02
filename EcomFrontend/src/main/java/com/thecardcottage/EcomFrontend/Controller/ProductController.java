@@ -64,7 +64,7 @@ public class ProductController {
 		
 	}}
 
-	@RequestMapping("/product")
+	@RequestMapping("/admin/product")
 	String productPage(Model model) {
 		model.addAttribute("productobject", new Product());
 		model.addAttribute("productlist", productdao.selectAllProducts());
@@ -102,7 +102,7 @@ public class ProductController {
 		return "index";
 	}
 	
-	@RequestMapping("/addproduct")
+	@RequestMapping("/admin/addproduct")
 	String addProduct(@Valid @ModelAttribute("productobject") Product p, BindingResult bindingResult, Model model) {
 		try {
 			if (bindingResult.hasErrors()) {
@@ -134,7 +134,7 @@ public class ProductController {
 		model.addAttribute("editmode", false);
 		return "index";
 	}
-	@RequestMapping("/deleteproduct")
+	@RequestMapping("/admin/deleteproduct")
 	String deleteProduct(@RequestParam("pdtid") int pdtid, Model model) {
 		if (productdao.deleteProduct(pdtid)) {
 			deleteimage(pdtid);
@@ -149,7 +149,7 @@ public class ProductController {
 		model.addAttribute("editmode", false);
 		return "index";
 	}
-	@RequestMapping("/editproduct")
+	@RequestMapping("/admin/editproduct")
 	String editProduct(@RequestParam("pdtid") int pdtid, Model model) {
 		
 		model.addAttribute("editmode", true);
@@ -166,7 +166,7 @@ public class ProductController {
 
 	}
 
-	@RequestMapping("/updateproduct")
+	@RequestMapping("/admin/updateproduct")
 	String updateProduct(@Valid @ModelAttribute("productobject") Product p, BindingResult bindingResult, Model model) {
 		try {
 			if (bindingResult.hasErrors()) {

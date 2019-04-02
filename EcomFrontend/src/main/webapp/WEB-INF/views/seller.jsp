@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<c:set var="cr" value="${pageContext.request.contextPath}"/>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <style>
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600)
@@ -11,7 +11,7 @@ body {
 	font-weight: 400;
 	line-height: 1.6;
 	text-align: center;
-	background-image: url("resources/images/white.jpg");
+	background-image: url("${cr}/admin/resources/images/white.jpg");
 }
 
 .card {
@@ -104,11 +104,11 @@ body {
 					<div class="card-body">
 						<div class="row">
 							<c:if test="${!editmode}">
-								<c:set var="action" value="addseller"></c:set>
+								<c:set var="action" value="${cr}/admin/addseller"></c:set>
 							</c:if>
 
 							<c:if test="${editmode}">
-								<c:set var="action" value="updateseller"></c:set>
+								<c:set var="action" value="${cr}/admin/updateseller"></c:set>
 							</c:if>
 
 
@@ -167,9 +167,9 @@ body {
 												<td>${sell.sellername}</td>
 												<td>${sell.sellerdesc}</td>
 												<td class="text-center"><a class='btn btn-info btn-xs'
-													href="editseller?sellname=${sell.sellername}"><span
+													href="${cr}/admin/editseller?sellname=${sell.sellername}"><span
 														class="glyphicon glyphicon-edit"></span> Edit</a> <a
-													href="deleteseller?sellname=${sell.sellername}"
+													href="${cr}/admin/deleteseller?sellname=${sell.sellername}"
 													class="btn btn-danger btn-xs"><span
 														class="glyphicon glyphicon-remove"></span> Del</a></td>
 										</c:forEach>
@@ -184,8 +184,6 @@ body {
 				</div>
 			</div>
 		</div>
-	</div>
-	</div>
 	</div>
 
 	</main>

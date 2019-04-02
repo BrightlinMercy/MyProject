@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="cr" value="${pageContext.request.contextPath}" />
 <script>
 	$(function() {
 		'use strict';
@@ -296,7 +298,7 @@
 					<i class="fa fa-align-right"></i>
 				</button>
 
-				<a class="navbar-brand" href="#"> <img src="resources/images/Capture3.PNG"
+				<a class="navbar-brand" href="#"> <img src="${cr}/resources/images/Capture3.PNG"
 					alt="logo" style="width: 50%;">
 				</a>
 
@@ -304,16 +306,16 @@
 			</div>
 			<div class="menu" id="open-navbar1">
 				<ul class="list">
-					<li><a href="index"><span class="glyphicon glyphiconHome"></span>Home</a></li>
+					<li><a href="${cr}/index"><span class="glyphicon glyphiconHome"></span>Home</a></li>
 
-					<li><a href="aboutus">About Us</a></li>
-					<li><a href="contactus">Contact us</a></li>
-					<li><a href="login">Login</a></li>
-					<li><a href="register">Register</a></li>
-					<li><a href="category">Category</a></li>
-					<li><a href="seller">Seller</a></li>
-					<li><a href="product">Product</a></li>
-				    <li><a href="viewproduct">Viewall</a></li>
+					<li><a href="${cr}/aboutus">About Us</a></li>
+					<li><a href="${cr}/contactus">Contact us</a></li>
+					<li><a href="${cr}/login">Login</a></li>
+					<li><a href="${cr}/register">Register</a></li>
+					<li><a href="${cr}/admin/category">Category</a></li>
+					<li><a href="${cr}/admin/seller">Seller</a></li>
+					<li><a href="${cr}/admin/product">Product</a></li>
+				    <li><a href="${cr}/viewproduct">Viewall</a></li>
 					
 					
 				</ul>

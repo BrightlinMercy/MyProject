@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<c:set var="cr" value="${pageContext.request.contextPath}" />
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <style>
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600)
@@ -11,7 +11,7 @@ body {
 	font-weight: 400;
 	line-height: 1.6;
 	text-align: center;
-	background-image: url("resources/images/white.jpg");
+	background-image: url("${cr}/admin/resources/images/white.jpg");
 }
 
 .card {
@@ -104,11 +104,11 @@ body {
 					<div class="card-body">
 						<div class="row">
 							<c:if test="${!editmode}">
-								<c:set var="action" value="addcategory"></c:set>
+								<c:set var="action" value="${cr}/admin/addcategory"></c:set>
 							</c:if>
 
 							<c:if test="${editmode}">
-								<c:set var="action" value="updatecategory"></c:set>
+								<c:set var="action" value="${cr}/admin/updatecategory"></c:set>
 							</c:if>
 
 
@@ -168,9 +168,9 @@ body {
 												<td>${cat.catename}</td>
 												<td>${cat.catedesc}</td>
 												<td class="text-center"><a class='btn btn-info btn-xs'
-													href="editcategory?catname=${cat.catename}"><span
+													href="${cr}/admin/editcategory?catname=${cat.catename}"><span
 														class="glyphicon glyphicon-edit"></span> Edit</a> <a
-													href="deletecategory?catname=${cat.catename}"
+													href="${cr}/admin/deletecategory?catname=${cat.catename}"
 													class="btn btn-danger btn-xs"><span
 														class="glyphicon glyphicon-remove"></span> Del</a></td>
 										</c:forEach>

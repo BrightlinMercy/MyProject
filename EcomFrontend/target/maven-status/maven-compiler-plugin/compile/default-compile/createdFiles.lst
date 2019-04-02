@@ -2,4 +2,5 @@ com\thecardcottage\EcomFrontend\Controller\HomeController.class
 com\thecardcottage\EcomFrontend\Controller\SellerController.class
 com\thecardcottage\EcomFrontend\Controller\ProductController.class
 com\thecardcottage\EcomFrontend\Controller\CustomerRegisterController.class
+com\thecardcottage\EcomFrontend\Controller\LoginController.class
 com\thecardcottage\EcomFrontend\Controller\CategoryController.class

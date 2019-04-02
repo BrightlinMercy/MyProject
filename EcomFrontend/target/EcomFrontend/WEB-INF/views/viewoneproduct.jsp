@@ -1,3 +1,6 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="cr" value="${pageContext.request.contextPath}"/>
+
 <style type="text/css">
 /*
 	** Style Simple Ecommerce Theme for Bootstrap 4
@@ -77,7 +80,7 @@
 			<div class="card bg-light mb-3" style="width: 80%;">
 				<div class="card-body">
 					<img class="img-fluid"
-						src="resources/productimages/${myproduct.pdtid}.jpg"
+						src="${cr}/resources/productimages/${myproduct.pdtid}.jpg"
 						height="450" style="max-height: 500px;" width="100%" />
 				</div>
 			</div>

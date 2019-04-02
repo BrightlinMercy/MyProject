@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="cr" value="${pageContext.request.contextPath}" />
 <style>
 @import
 	url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700)
@@ -10,7 +12,7 @@ body {
 	font-weight: 400;
 	line-height: 1.6;
 	text-align: left;
-	background-image: url("resources/images/white.jpg");
+	background-image: url("${cr}/resources/images/white.jpg");
 }
 
 a:hover {

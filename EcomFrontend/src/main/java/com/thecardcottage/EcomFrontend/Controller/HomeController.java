@@ -27,14 +27,5 @@ public class HomeController {
 		model.addAttribute("contactPage", true);
 		return "index";
 	}
-	@RequestMapping("/login")
-	String loginPage(Model model)
-	{
-		model.addAttribute("loginPage", true);
-		return "index";
-	}
-	
-	
-	
 	
 }

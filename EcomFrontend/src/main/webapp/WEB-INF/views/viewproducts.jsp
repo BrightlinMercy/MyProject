@@ -1,8 +1,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="cr" value="${pageContext.request.contextPath}"/>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <style type="text/css">
 body {
-		background-image: url("resources/images/white.jpg");
+		background-image: url("${cr}/resources/images/white.jpg");
 }
 .bloc_left_price {
 	color: #c01508;
@@ -42,7 +43,7 @@ body {
 				
 				<li class="list-group-item"><a href="viewproduct">All</a></li>
 					<c:forEach items="${categorylist}" var="c">
-						<li class="list-group-item"><a href="selectbycat?catid=${c.cateid}">${c.catename}</a></li>
+						<li class="list-group-item"><a href="${cr}/selectbycat?catid=${c.cateid}">${c.catename}</a></li>
 					</c:forEach>
 				</ul>
 			</div>
@@ -55,7 +56,7 @@ body {
 
 						<div class="card">
 							<img class="card-img-top"
-								src="resources/productimages/${viewallprod.pdtid}.jpg" width="70"
+								src="${cr}/resources/productimages/${viewallprod.pdtid}.jpg" width="70"
 								height="350" alt="Card image cap">
 							<div class="card-body">
 								<h4 class="card-title">
@@ -64,7 +65,7 @@ body {
 								<div class="row">
 
 									<p class="btn btn-info btn-block">Rs.${viewallprod.pdtprice}</p>
-									<a href="viewoneproduct?proid=${viewallprod.pdtid}"
+									<a href="${cr}/viewoneproduct?proid=${viewallprod.pdtid}"
 										class="btn btn-success btn-block"><p>View Product</p></a>
 								</div>
 							</div>

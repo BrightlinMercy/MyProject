@@ -14,6 +14,7 @@ import com.thecardcottage.EcomBackend.dao.CategoryDao;
 import com.thecardcottage.EcomBackend.model.Category;
 
 @Controller
+@RequestMapping("/admin")
 public class CategoryController {
 	@Autowired
 	CategoryDao catdao;

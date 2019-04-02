@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="cr" value="${pageContext.request.contextPath}"/>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <style>
 body {
@@ -7,7 +8,7 @@ body {
 	font-weight: 400;
 	line-height: 1.6;
 	align: center;
-	background-image: url("resources/images/white.jpg");
+	background-image: url("${cr}/admin/resources/images/white.jpg");
 }
 </style>
 
@@ -32,11 +33,11 @@ body {
 
 
 			<c:if test="${!editmode}">
-				<c:set var="action" value="addproduct"></c:set>
+				<c:set var="action" value="${cr}/adminaddproduct"></c:set>
 			</c:if>
 
 			<c:if test="${editmode}">
-				<c:set var="action" value="updateproduct"></c:set>
+				<c:set var="action" value="${cr}/adminupdateproduct"></c:set>
 			</c:if>
 
 
@@ -58,7 +59,6 @@ body {
 							class="form-control input-md" path="pdtname"></form:input>
 
 					</div>
-				</div>
 
 				<!-- Textarea -->
 				<div class="form-group">
@@ -178,13 +178,13 @@ body {
 									<td>${product.pdtprice}</td>
 									<td>${product.pdtcategory.catename}</td>
 									<td>${product.pdtseller.sellername}</td>
-									<td><img src="resources/productimages/${product.pdtid}.jpg" width="50" height="50"/></td>
+									<td><img src="${cr}/admin/resources/productimages/${product.pdtid}.jpg" width="50" height="50"/></td>
 
 
 									<td class="text-center"><a class='btn btn-info btn-xs'
-										href="editproduct?pdtid=${product.pdtid}"><span
+										href="${cr}/admin/editproduct?pdtid=${product.pdtid}"><span
 											class="glyphicon glyphicon-edit"></span> Edit</a> <a
-										href="deleteproduct?pdtid=${product.pdtid}"
+										href="${cr}/admin/deleteproduct?pdtid=${product.pdtid}"
 										class="btn btn-danger btn-xs"><span
 											class="glyphicon glyphicon-remove"></span> Del</a></td>
 							</c:forEach>

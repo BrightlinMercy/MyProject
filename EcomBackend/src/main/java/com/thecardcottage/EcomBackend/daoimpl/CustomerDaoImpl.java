@@ -77,12 +77,13 @@ public class CustomerDaoImpl implements CustomerDao {
 	public Customer selectOneCustomer(String custemailid) {
 	try
 	{
-		return (Customer) sessionFactory.getCurrentSession().createQuery("from customer while email id='"+custemailid+"'").uniqueResult();
+		return (Customer) sessionFactory.getCurrentSession().createQuery("from Customer where custemailid='"+custemailid+"'").uniqueResult();
 	}
 	catch(Exception e)
 	{
 		return null;
 	}
+	
 	
 	}
 

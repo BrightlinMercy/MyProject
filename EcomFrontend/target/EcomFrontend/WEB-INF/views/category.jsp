@@ -11,7 +11,7 @@ body {
 	font-weight: 400;
 	line-height: 1.6;
 	text-align: center;
-	background-image: url("${cr}/admin/resources/images/white.jpg");
+	background-image: url("${cr}/resources/images/white.jpg");
 }
 
 .card {

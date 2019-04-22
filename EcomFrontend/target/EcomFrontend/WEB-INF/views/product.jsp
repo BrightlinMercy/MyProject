@@ -8,7 +8,7 @@ body {
 	font-weight: 400;
 	line-height: 1.6;
 	align: center;
-	background-image: url("${cr}/admin/resources/images/white.jpg");
+	background-image: url("${cr}/resources/images/white.jpg");
 }
 </style>
 
@@ -37,7 +37,7 @@ body {
 			</c:if>
 
 			<c:if test="${editmode}">
-				<c:set var="action" value="${cr}/adminupdateproduct"></c:set>
+				<c:set var="action" value="${cr}/admin/updateproduct"></c:set>
 			</c:if>
 
 
@@ -178,7 +178,7 @@ body {
 									<td>${product.pdtprice}</td>
 									<td>${product.pdtcategory.catename}</td>
 									<td>${product.pdtseller.sellername}</td>
-									<td><img src="${cr}/admin/resources/productimages/${product.pdtid}.jpg" width="50" height="50"/></td>
+									<td><img src="${cr}/resources/productimages/${product.pdtid}.jpg" width="50" height="50"/></td>
 
 
 									<td class="text-center"><a class='btn btn-info btn-xs'

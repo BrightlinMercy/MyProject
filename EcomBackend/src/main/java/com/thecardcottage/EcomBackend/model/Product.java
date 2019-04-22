@@ -33,7 +33,7 @@ public class Product {
 	private Seller pdtseller;
 	
    @Column(nullable=false)
-   @Min(value=100)
+   @Min(value=0)
    @Max(value=1000)
     private int pdtstock;
 	
@@ -126,6 +126,6 @@ public void setPimage(MultipartFile pimage) {
 	}
 	
 	
-		
+	
 	
 }

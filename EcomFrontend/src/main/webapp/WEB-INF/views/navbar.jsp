@@ -38,7 +38,6 @@
 	});
 </script>
 <style>
-
 .container:after, .container:before {
 	content: "";
 	display: block;
@@ -47,7 +46,7 @@
 
 /* Start navbar */
 .nav {
-	background-color: #800080	;
+	background-color: #800080;
 	border-bottom: 1px solid #ececec;
 	height: auto;
 }
@@ -298,27 +297,57 @@
 					<i class="fa fa-align-right"></i>
 				</button>
 
-				<a class="navbar-brand" href="#"> <img src="${cr}/resources/images/Capture3.PNG"
-					alt="logo" style="width: 50%;">
+				<a class="navbar-brand" href="#"> <img
+					src="${cr}/resources/images/Capture3.PNG" alt="logo"
+					style="width: 50%;">
 				</a>
 
 
 			</div>
 			<div class="menu" id="open-navbar1">
-				<ul class="list">
-					<li><a href="${cr}/index"><span class="glyphicon glyphiconHome"></span>Home</a></li>
+				<c:choose>
+					<c:when test="${sessionScope.customerloggedin}">
+						<ul class="list">
+							<li><a href="${cr}/index"><span
+									class="glyphicon glyphiconHome"></span>Home</a></li>
 
-					<li><a href="${cr}/aboutus">About Us</a></li>
-					<li><a href="${cr}/contactus">Contact us</a></li>
-					<li><a href="${cr}/login">Login</a></li>
-					<li><a href="${cr}/register">Register</a></li>
-					<li><a href="${cr}/admin/category">Category</a></li>
-					<li><a href="${cr}/admin/seller">Seller</a></li>
-					<li><a href="${cr}/admin/product">Product</a></li>
-				    <li><a href="${cr}/viewproduct">Viewall</a></li>
-					
-					
-				</ul>
+							<li><a href="${cr}/aboutus">About Us</a></li>
+							<li><a href="${cr}/contactus">Contact us</a></li>
+							<li><a href="${cr}/viewproduct">Viewall</a></li>
+							<li><a>Hi...${sessionScope.username}</a></li>
+							<li><a href="${cr}/user/cart">Cart</a></li>
+							<li><a href="${cr}/logout">Logout</a></li>
+						</ul>
+					</c:when>
+
+					<c:when test="${sessionScope.adminloggedin}">
+						<ul class="list">
+							<li><a href="${cr}/index"><span
+									class="glyphicon glyphiconHome"></span>Home</a></li>
+
+							<li><a href="${cr}/aboutus">About Us</a></li>
+							<li><a href="${cr}/contactus">Contact us</a></li>
+							<li><a href="${cr}/admin/category">Category</a></li>
+							<li><a href="${cr}/admin/seller">Seller</a></li>
+							<li><a href="${cr}/admin/product">Product</a></li>
+							<li><a href="${cr}/logout">Logout</a></li>
+						</ul>
+					</c:when>
+
+					<c:otherwise>
+						<ul class="list">
+							<li><a href="${cr}/index"><span
+									class="glyphicon glyphiconHome"></span>Home</a></li>
+
+							<li><a href="${cr}/aboutus">About Us</a></li>
+							<li><a href="${cr}/contactus">Contact us</a></li>
+							<li><a href="${cr}/login">Login</a></li>
+							<li><a href="${cr}/register">Register</a></li>
+							<li><a href="${cr}/viewproduct">Viewall</a></li>
+							
+						</ul>
+					</c:otherwise>
+				</c:choose>
 			</div>
 		</div>
 	</nav>

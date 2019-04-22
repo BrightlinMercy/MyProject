@@ -1,6 +1,9 @@
 D:\Mercy\EcomFrontend\src\main\java\com\thecardcottage\EcomFrontend\Controller\CategoryController.java
 D:\Mercy\EcomFrontend\src\main\java\com\thecardcottage\EcomFrontend\Controller\SellerController.java
 D:\Mercy\EcomFrontend\src\main\java\com\thecardcottage\EcomFrontend\Controller\LoginController.java
+D:\Mercy\EcomFrontend\src\main\java\com\thecardcottage\EcomFrontend\Controller\CartController.java
+D:\Mercy\EcomFrontend\src\main\java\com\thecardcottage\EcomFrontend\Controller\AddressController.java
 D:\Mercy\EcomFrontend\src\main\java\com\thecardcottage\EcomFrontend\Controller\HomeController.java
+D:\Mercy\EcomFrontend\src\main\java\com\thecardcottage\EcomFrontend\Controller\OrderController.java
 D:\Mercy\EcomFrontend\src\main\java\com\thecardcottage\EcomFrontend\Controller\ProductController.java
 D:\Mercy\EcomFrontend\src\main\java\com\thecardcottage\EcomFrontend\Controller\CustomerRegisterController.java

@@ -1,11 +1,15 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<c:set var="cr" value="${pageContext.request.contextPath}"/>
+<c:set var="cr" value="${pageContext.request.contextPath}" />
 
 <style type="text/css">
 /*
 	** Style Simple Ecommerce Theme for Bootstrap 4
 	** Created by T-PHP https://t-php.fr/43-theme-ecommerce-bootstrap-4.html
 	*/
+	body {
+		background-image: url("${cr}/resources/images/white.jpg");
+}
+	
 .bloc_left_price {
 	color: #c01508;
 	text-align: center;
@@ -82,6 +86,7 @@
 					<img class="img-fluid"
 						src="${cr}/resources/productimages/${myproduct.pdtid}.jpg"
 						height="450" style="max-height: 500px;" width="100%" />
+
 				</div>
 			</div>
 		</div>
@@ -91,21 +96,37 @@
 				<div class="card-body">
 					<p class="price">${myproduct.pdtname}</p>
 					<p class="price_discounted"
-						style="color: #0762ff; font-size: 110%;">${myproduct.pdtseller.sellername}</p>
+						style="color: #0762ff; font-size: 110%;">
+						${myproduct.pdtseller.sellername}</p>
 					<p class="price_discounted ">Rs.${myproduct.pdtprice}</p>
-					<form method="get" action="cart.html">
+					<form action="${cr}/AddToCart">
 						<div class="form-group">
 
 							<label>Quantity :</label>
 							<div class="input-group mb-3">
-								<input type="text" class="form-control" id="quantity"
-									name="quantity" min="1" max="100" value="1">
+								<input type="hidden" name="pid" value="${myproduct.pdtid}">
+								<input type="hidden" class="form-control" id="quantity"
+									name="quantity" min="100" max="1000" value="1">
 							</div>
 						</div>
-						<a href="cart.html"
-							class="btn btn-success btn-lg btn-block text-uppercase"> <i
-							class="fa fa-shopping-cart"></i> Add To Cart
-						</a>
+						<c:if test="${myproduct.pdtstock>=300}">
+							<button
+								class="btn btn-success btn-lg btn-block text-uppercase"> <i
+									class="fa fa-shopping-cart"></i> Add To Cart
+							</button>
+						</c:if>
+						<c:if test="${myproduct.pdtstock==100}">
+							<button
+								class="btn btn-success btn-lg btn-block text-uppercase"> <i
+									class="fa fa-shopping-cart"></i>
+								<p align="center">Add To Cart-Only 100 left</p>
+								<font size="5" color="red">HURRY UP!!!</font>
+							</button>
+						</c:if>
+						<c:if test="${myproduct.pdtstock==0}">
+							<p>Out of Stock</p>
+						</c:if>
+
 					</form>
 
 				</div>

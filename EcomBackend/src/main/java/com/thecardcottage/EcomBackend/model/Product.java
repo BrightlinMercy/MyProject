@@ -10,6 +10,8 @@ import javax.persistence.Transient;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.web.multipart.MultipartFile;
 
 @Entity
@@ -27,9 +29,12 @@ public class Product {
 	
 
    @ManyToOne
+   @OnDelete(action=OnDeleteAction.CASCADE)
 	private Category pdtcategory;
    
    @ManyToOne
+   @OnDelete(action=OnDeleteAction.CASCADE)
+
 	private Seller pdtseller;
 	
    @Column(nullable=false)

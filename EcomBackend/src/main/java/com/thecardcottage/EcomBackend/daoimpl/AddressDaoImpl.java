@@ -20,6 +20,7 @@ public class AddressDaoImpl implements AddressDao {
 	@Override
 	public boolean createAddress(Address address) {
 		try {
+			address.setState("active");
 			sessionFactory.getCurrentSession().save(address);
 			return true;
 
@@ -43,7 +44,8 @@ public class AddressDaoImpl implements AddressDao {
 	@Override
 	public boolean deleteAddress(Address address) {
 		try {
-			sessionFactory.getCurrentSession().delete(address);
+			address.setState("inactive");
+			sessionFactory.getCurrentSession().update(address);
 			return true;
 
 		} catch (Exception e) {
@@ -56,7 +58,7 @@ public class AddressDaoImpl implements AddressDao {
 	public List<Address> selectAllAddress(int custid) {
 
 		try {
-			return sessionFactory.getCurrentSession().createQuery("from Address where customer_custid="+custid).list();
+			return sessionFactory.getCurrentSession().createQuery("from Address where customer_custid="+custid+"and status='active'").list();
 		} catch (Exception e) {
 			return null;
 		}

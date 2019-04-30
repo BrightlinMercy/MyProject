@@ -20,8 +20,8 @@ body {
 	<fieldset>
 		<div class="container">
 			<c:if test="${success}">
-				<div class="alert alert-success" role="alert">inserted
-					successfully</div>
+				<div class="alert alert-success" role="alert">Transaction
+					successfull</div>
 
 			</c:if>
 
@@ -33,7 +33,7 @@ body {
 
 
 			<c:if test="${!editmode}">
-				<c:set var="action" value="${cr}/adminaddproduct"></c:set>
+				<c:set var="action" value="${cr}/admin/addproduct"></c:set>
 			</c:if>
 
 			<c:if test="${editmode}">

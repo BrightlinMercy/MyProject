@@ -64,11 +64,17 @@ public class CategoryController {
 
 	@RequestMapping("/deletecategory")
 	String deleteCategory(@RequestParam("catname") String catname, Model model) {
+		try {
 		if (catdao.deleteCategory(catname)) {
 			model.addAttribute("success", true);
 		} else {
 			model.addAttribute("error", true);
 			model.addAttribute("message", "please try after some time");
+		}}
+		catch(Exception e)
+		{
+			model.addAttribute("error", true);
+			model.addAttribute("message", "please delete products first and then delete seller");
 		}
 		model.addAttribute("catobject", new Category());
 		model.addAttribute("categoryPage", true);

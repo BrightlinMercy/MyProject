@@ -85,8 +85,8 @@ body {
 	<main class="login-form">
 	<div class="cotainer">
 		<c:if test="${success}">
-			<div class="alert alert-success" role="alert">inserted
-				successfully</div>
+			<div class="alert alert-success" role="alert">Transaction
+				successfull</div>
 
 		</c:if>
 

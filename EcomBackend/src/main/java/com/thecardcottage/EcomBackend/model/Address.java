@@ -40,6 +40,17 @@ public class Address {
 
 	@Column(nullable = false)
 	private int pincode;
+	
+	@Column
+	private String status;
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
 
 	public Customer getCustomer() {
 		return customer;

@@ -62,11 +62,18 @@ public class SellerController {
 	}
 	@RequestMapping("/deleteseller")
 	String deleteSeller(@RequestParam("sellname") String sellname, Model model) {
+		try {
 		if (sellerdao.deleteSeller(sellname)) {
 			model.addAttribute("success", true);
 		} else {
 			model.addAttribute("error", true);
 			model.addAttribute("message", "please try after some time");
+		}}
+		catch(Exception e)
+		{
+			model.addAttribute("error", true);
+			model.addAttribute("message", "please delete products first and then delete seller");
+		
 		}
 		model.addAttribute("sellobject", new Seller());
 		model.addAttribute("sellerPage", true);

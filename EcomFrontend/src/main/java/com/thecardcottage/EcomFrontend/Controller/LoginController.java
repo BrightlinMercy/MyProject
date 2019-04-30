@@ -48,8 +48,16 @@ public class LoginController {
 				httpSession.setAttribute("customerid", customer.getCustid());
 				httpSession.setAttribute("emailid", customer.getCustemailid());
 				httpSession.setAttribute("customerloggedin", true);
+				if(httpSession.getAttribute("pid")!=null)
+				{
+					return "redirect:/AddToCart	?pid="+Integer.parseInt(httpSession.getAttribute("pid").toString())+"&quantity="+Integer.parseInt(httpSession.getAttribute("qty").toString());			
+					}
+				else
+				{
+					
+				
 				model.addAttribute("sliderPage",true);
-			}
+			}}
 			else
 			{
 				httpSession.setAttribute("username","ADMINISTRATOR");

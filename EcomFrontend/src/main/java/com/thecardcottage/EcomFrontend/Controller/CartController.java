@@ -31,7 +31,7 @@ public class CartController {
 	CartDao cartdao;
 
 	@RequestMapping("/AddToCart")
-	String addToCart(HttpSession httpSession, @RequestParam("pid") int productid,@RequestParam("quantity") int pqty) {
+	String addToCart(HttpSession httpSession, @RequestParam("pid") int productid, @RequestParam("quantity") int pqty) {
 		if (httpSession.getAttribute("emailid") != null) {
 			Cart cart = new Cart();
 			Product product = productdao.selectOneProduct(productid);
@@ -41,19 +41,19 @@ public class CartController {
 				cart.setCustomer(customer);
 				cart.setProduct(product);
 				cart.setQuantity(pqty);
-				cart.setSubtotal(pqty*product.getPdtprice());
+				cart.setSubtotal(pqty * product.getPdtprice());
 				cartdao.insertCart(cart);
-				
+
 				return "redirect:/user/cart";
-				
-		} else {
+
+			} else {
 				Iterator<Cart> iterator = cartlist.listIterator();
 				while (iterator.hasNext()) {
 					Cart cart2 = (Cart) iterator.next();
-					Product p=cart2.getProduct();
+					Product p = cart2.getProduct();
 					if (p.getPdtid() == productid) {
 						int qty = cart2.getQuantity();
-						qty+=pqty;
+						qty += pqty;
 						cart2.setQuantity(qty);
 						cart2.setSubtotal(qty * product.getPdtprice());
 						cartdao.updateCart(cart2);
@@ -63,40 +63,41 @@ public class CartController {
 				cart.setCustomer(customer);
 				cart.setProduct(product);
 				cart.setQuantity(pqty);
-				cart.setSubtotal(pqty*product.getPdtprice());
+				cart.setSubtotal(pqty * product.getPdtprice());
 				cartdao.insertCart(cart);
 				return "redirect:/user/cart";
 			}
 
 		} else {
+			httpSession.setAttribute("pid", productid);
+			httpSession.setAttribute("qty", pqty);
+
 			return "redirect:/login";
 		}
 
 	}
 
 	@RequestMapping("/user/cart")
-	String viewCart(Model model,HttpSession httpSession)
-	{
-		float tot=0;
-		model.addAttribute("cartPage",true);
-		ArrayList<Cart> cartList=(ArrayList<Cart>) cartdao.selectAllCarts(custdao.selectOneCustomer(httpSession.getAttribute("emailid").toString()));
-		Iterator<Cart> iterator=cartList.listIterator();
+	String viewCart(Model model, HttpSession httpSession) {
+		float tot = 0;
+		model.addAttribute("cartPage", true);
+		ArrayList<Cart> cartList = (ArrayList<Cart>) cartdao
+				.selectAllCarts(custdao.selectOneCustomer(httpSession.getAttribute("emailid").toString()));
+		Iterator<Cart> iterator = cartList.listIterator();
 		while (iterator.hasNext()) {
 			Cart cart = (Cart) iterator.next();
-			tot=tot+cart.getSubtotal();
+			tot = tot + cart.getSubtotal();
 		}
-		model.addAttribute("cartitems",cartList);
-		model.addAttribute("total",tot);
+		model.addAttribute("cartitems", cartList);
+		model.addAttribute("total", tot);
 
 		return "index";
 	}
-	
 
 	@RequestMapping("/user/deleteitem")
-	String deleteCartItem(@RequestParam("itemid") int id)
-	{
-    cartdao.deleteCart(id);
-    return "redirect:/user/cart";
-    
+	String deleteCartItem(@RequestParam("itemid") int id) {
+		cartdao.deleteCart(id);
+		return "redirect:/user/cart";
+
 	}
 }
